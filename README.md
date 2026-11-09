@@ -2,22 +2,41 @@
 
 <img width="2752" height="1536" alt="AndroidStudio-NetBeans" src="https://github.com/user-attachments/assets/7b1aafba-e45b-45e9-998f-286a4b659724" />
 
-> **Application de réseau social et messagerie instantanée (Amis & Groupes)**[cite: 3]  
-> Projet universitaire réalisé en BUT Réseaux & Télécommunications — IUT Belfort-Montbéliard (Université de Franche-Comté)[cite: 38].
+> **Application de réseau social/messagerie instantanée réalisé sur Netbeans et Android Studio Code**  
+> Projet universitaire réalisé en BUT Réseaux & Télécommunications — IUT Belfort-Montbéliard (Université de Franche-Comté).
 
 ---
 
-## 📌 Présentation du projet
+## Présentation du projet
 
-Dans le cadre de la SAÉ 302, ce projet consiste à concevoir et implémenter une architecture réseau **Client/Serveur** complète au-dessus de la couche de transport **UDP (port 3333)**, inspirée du modèle des messageries instantanées de type WhatsApp[cite: 3, 4, 33].
+Dans le cadre de la SAÉ 302, ce projet de groupe a consisté à concevoir et implémenter une architecture réseau **Client/Serveur** complète au-dessus de la couche de transport **UDP (port 3333)**, inspirée d'application de messageries instantanées (comme WhatsApp).
 
-Le système permet la gestion des comptes, l'ajout d'amis, la création de salons de discussion multi-utilisateurs et l'échange de messages en temps réel ou asynchrone (mode boîte aux lettres en mémoire vive)[cite: 3, 33].
+Le système que nous avons mis en place permet la gestion des comptes, l'ajout d'amis, la création de groupe de discussion avec plusieurs utilisateurs et l'échange de messages en temps réel ou asynchrone (mode boîte aux lettres en mémoire vive).
 
-> **Note sur l'utilisation de l'IA :** L'intelligence artificielle a été utilisée exclusivement pour concevoir et améliorer les éléments visuels et graphiques de nos applications, l'intégralité de l'architecture réseau, du protocole et de la logique applicative ayant été développée par l'équipe[cite: 48].
+> Nous avons utilisé l'intelligence artificielle dans ce projet, cependant cela a été exclusivement fait pour concevoir et améliorer les éléments visuels et graphiques de nos applications, l'intégralité de l'architecture réseau, du protocole et de la logique applicative ayant été développée par notre groupe.
 
 ---
 
-## 🎥 Démonstrations Vidéo
+## Environnements de Développement & Rôles
+
+Le développement a été articulé autour de deux IDE complémentaires, chacun ciblant un maillon clé de la chaîne de communication client/serveur :
+
+### 1. Apache NetBeans — Cœur Réseau & Prototype Swing
+* **Présentation :** IDE modulaire de référence pour le développement Java standard (SE).
+* **Rôle dans le projet :**
+  * **Serveur Central UDP :** Implémentation du moteur de communication (port 3333), du stockage volatile des sessions en RAM et du parseur de commandes CSV.
+  * **Banc d'essai Swing :** Conception d'un premier client graphique de bureau pour valider le protocole applicatif et exécuter des scénarios de test multi-clients sans la lourdeur d'un émulateur mobile.
+
+### 2. Android Studio — Client Mobile Final
+* **Présentation :** IDE officiel de Google dédié à la création et à l'émulation d'applications sous Android.
+* **Rôle dans le projet :**
+  * **Interface Mobile Moderne :** Conception d'une UI réactive à base de layouts XML et de formes vectorielles sur mesure (bulles de chat asymétriques, menu latéral *Navigation Drawer*, badges de notifications).
+  * **Gestion Réseau Asynchrone :** Déport obligatoire des sockets UDP hors du *Main UI Thread* via des threads d'arrière-plan et callbacks (`UdpClient.java` / `UdpListener`) pour garantir la fluidité de l'interface.
+  * **Validation & Emulation :** Tests fonctionnels complets sur périphériques virtuels (AVD) et terminaux réels.
+
+---
+
+## Démonstrations Vidéo
 
 Retrouvez les présentations détaillées du fonctionnement du serveur, du client Swing et de l'application mobile :
 
@@ -27,19 +46,19 @@ Retrouvez les présentations détaillées du fonctionnement du serveur, du clien
 
 ---
 
-## 👥 Équipe de projet
+## Équipe de projet
 
-Le projet a été mené selon la méthode Agile avec la répartition des rôles suivante[cite: 41] :
+Le projet a été mené selon la méthode Agile avec la répartition des rôles suivante :
 
-* **Florian Joyez** : Chef de projet & Développeur client Android Studio[cite: 3]
-* **Mohamed-Amin Barkani** : Développeur client Android Studio[cite: 3]
-* **Redouane Azmani** : Responsable serveur NetBeans & Développeur client graphique NetBeans[cite: 3]
+* **Florian Joyez** : Chef de projet & Développeur client Android Studio
+* **Mohamed-Amin Barkani** : Développeur client Android Studio
+* **Redouane Azmani** : Responsable serveur NetBeans & Développeur client graphique NetBeans
 
 ---
 
-## 🧱 Architecture globale & Technologies
+## Architecture globale & Technologies
 
-Le projet adopte un patron d'architecture **MVC (Modèle-Vue-Contrôleur)** scindé en trois briques principales[cite: 3, 12, 40] :
+Le projet adopte un patron d'architecture **MVC (Modèle-Vue-Contrôleur)** scindé en trois briques principales :
 
 ```text
        ┌──────────────────────┐           ┌──────────────────────┐
